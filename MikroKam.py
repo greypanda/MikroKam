@@ -13,6 +13,7 @@ version 0.2.0 --
                     changed file naming to internal counter
                     moved usb to new module -- flashman
 version 0.2.1 -- fixed screen sizes
+version 0.2.2 -- working on push problems
 
 
 """
