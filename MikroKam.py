@@ -59,7 +59,7 @@ def Main():
     if is_pi():
         """Use the whole screen if native"""
         root.geometry('%dx%d+%d+%d' % ( int(config['app']['screen_width']),
-                                        int(config['app']['screen_height'])-80,0,0 ))
+                                        int(config['app']['screen_height']),0,0 ))
     else:
         """For development desktop, simulate the Rpi touchscreen"""
         root.geometry('800x480+0+0')
