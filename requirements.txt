@@ -1,2 +1,2 @@
-pydev
+pyudev
 Pillow
