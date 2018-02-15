@@ -1,6 +1,7 @@
 [app]
+
 photo_count_initial = 1000
-photo_count_current = 1043
+photo_count_current = 
 photo_prefix = MikroKam-
 screen_width = 790
 screen_height = 430
@@ -11,8 +12,10 @@ image_height = 1080
 resolution_width = 1920
 resolution_height = 1080
 test_image = test.jpg
-last_run = 2018-02-15 08:46:45
+last_run = 
 
+[software]
+version = 0.2.2
 [camera]
 capture_format = jpeg
 quality = 85

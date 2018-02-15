@@ -184,7 +184,11 @@ class MainPage:
         """Construct the file name"""
         #filename = datetime.now().strftime("%Y%m%dT%H%M%SZ") + '.jpeg'
         ##filepath = path + '/' + filename
+
         current_photo = self.config['app']['photo_count_current']
+        if not current_photo:
+            self.config['app']['photo_count_current'] = self.config['app']['photo_count_initial']
+            current_photo = self.config['app'['photo_count_current']]
         filepath = path + '/' + self.config['app']['photo_prefix'] + current_photo  + '.' + self.config['camera']['capture_format']
 
         """Invoke the camera"""
@@ -192,7 +196,7 @@ class MainPage:
 
         """display the last picture and update the label"""
         self.image = Image.open(filepath)
-        self.image = self.image.resize((600,427),Image.ANTIALIAS)
+        self.image = self.image.resize((int(self.config['app']['photo_width']),int(self.config['app']['photo_height'])),Image.ANTIALIAS)
         self.photo = ImageTk.PhotoImage(self.image)  
         self.snapimage.configure(image=self.photo)  
         self.usbpath.set("Last snapshot:" + filepath) 
