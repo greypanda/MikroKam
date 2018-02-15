@@ -14,7 +14,7 @@ version 0.2.0 --
                     moved usb to new module -- flashman
 version 0.2.1 -- fixed screen sizes
 version 0.2.2 -- working on push problems
-
+version 0.2.3 -- installation script
 
 """
 import threading
@@ -31,7 +31,7 @@ from flashman import FlashMan
 
 root = Tk()
 
-__version__ = '0.2.0'
+__version__ = '0.2.3'
 
 def is_pi():
     """Detect a Pi, using GPIO module

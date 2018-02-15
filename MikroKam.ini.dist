@@ -15,7 +15,7 @@ test_image = test.jpg
 last_run = 
 
 [software]
-version = 0.2.2
+version = 0.2.3
 [camera]
 capture_format = jpeg
 quality = 85
