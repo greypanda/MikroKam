@@ -6,6 +6,7 @@
 
     Detect mount/unmount
 
+    version 0.2.1
 """
 import pyudev
 import psutil
