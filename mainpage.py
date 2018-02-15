@@ -17,37 +17,15 @@ import tempfile
 import errno
 
 
-def usblist():
-    """Detect and report on available USB drives"""
-
-    ulist = []
-    removable = [device for device in context.list_devices(subsystem='block', DEVTYPE='disk') if device.attributes.asstring('removable') == "1"]
-    for device in removable:
-        partitions = [device.device_node for device in context.list_devices(subsystem='block', DEVTYPE='partition', parent=device)]
-        for p in psutil.disk_partitions():
-            if p.device in partitions:
-                ulist.append(p.mountpoint)
-    return ulist
 
 
-def isWritable(path):
-    """Test to see if the usb drive can be written"""
-    try:
-        testfile = tempfile.TemporaryFile(dir = path)
-        testfile.close()
-    except OSError as e:
-        if e.errno == errno.EACCES:  # 13
-            return False
-        e.filename = path
-        return False
-    return True
+
+
 
 """Define some constants
     these will eventually be stored in the config file
 """
-TEST_IMAGE = 'test.jpg'
-IMAGE_SIZE = (600,400)
-PREVIEW_TIMER = 120
+
 class PreviewTask():
     """The preview can run indefinitely ( in theory ) and
         must be able to be terminated. This rather complex
@@ -96,18 +74,26 @@ from time import sleep
 from datetime import datetime
 from tkinter.ttk import Notebook,Frame, Checkbutton
 from PIL import Image, ImageTk
-
+from flashman import FlashMan
 
 class MainPage:
     """Define the structure of the page
         master is the root or tab
+        TEST_IMAGE = 'test.jpg'
+        IMAGE_SIZE = (600,400)
+        PREVIEW_TIMER = 120
     """
-    def __init__( self, master ):
+    def __init__( self, master,config,root ):
+        self.root = root
+        self.flashman = FlashMan(master)
+        self.config = config
         self.master = master
         self.master.columnconfigure(0,minsize=100)
 
-        self.image = Image.open(TEST_IMAGE)
-        self.image = self.image.resize(IMAGE_SIZE,Image.ANTIALIAS)
+        self.image = Image.open(self.config['app']['test_image'])
+        self.image = self.image.resize((int(self.config['app']['photo_width']),
+                                        int(self.config['app']['photo_height']))
+                                        ,Image.ANTIALIAS)
         self.photo = ImageTk.PhotoImage(self.image)
         self.snapimage = Label(master,image=self.photo)
         self.snapimage.grid(row=0,column=0,columnspan=6,rowspan=4,sticky = "NESW")
@@ -134,6 +120,9 @@ class MainPage:
             master, text="Stop", command=self.onStopClicked )
         self.cancelButton.grid(row=2,column=9,columnspan=4,rowspan=1,sticky="NESW")
        
+        self.quitButton = Button(
+            master,text="Quit",command=self.onQuitClicked)
+        self.quitButton.grid(row=4,column=9,columnspan=4,rowspan=1,sticky="NESW")
 
         self.bgTask2 = PreviewTask( self.previewThread)
       
@@ -160,8 +149,15 @@ class MainPage:
         try: self.bgTask2.stop()
         except: pass
                         
-
-    
+    def onQuitClicked(self):
+        """the quit button was clicked"""
+        print("on quit clicked")
+        try:
+           
+            self.root.destroy()
+        except:
+            print('oops')
+            pass
     def snapshotProcess( self, isRunningFunc=None ) :
         """Process to take a snapshot"""
 
@@ -170,7 +166,7 @@ class MainPage:
 
             we only succeed if the is one, and only one drive
         """
-        dest = usblist()
+        dest = self.flashman.usblist()
         if len(dest) == 0:
             messagebox.showerror('Error','No USB Drive mounted')
             return
@@ -179,15 +175,17 @@ class MainPage:
             return
  
         path = dest[0]
-        if not isWritable(path):
+        if not self.flashman.isWritable(path):
             messagebox.showerror('Error','Cannot write to:' + path)
             return
    
         self.usbpath.set("USB mounted:" + path)
 
         """Construct the file name"""
-        filename = datetime.now().strftime("%Y%m%dT%H%M%SZ") + '.jpeg'
-        filepath = path + '/' + filename
+        #filename = datetime.now().strftime("%Y%m%dT%H%M%SZ") + '.jpeg'
+        ##filepath = path + '/' + filename
+        current_photo = self.config['app']['photo_count_current']
+        filepath = path + '/' + self.config['app']['photo_prefix'] + current_photo  + '.' + self.config['camera']['capture_format']
 
         """Invoke the camera"""
         pikamera.Snapshot(filepath )
@@ -197,7 +195,13 @@ class MainPage:
         self.image = self.image.resize((600,427),Image.ANTIALIAS)
         self.photo = ImageTk.PhotoImage(self.image)  
         self.snapimage.configure(image=self.photo)  
-        self.usbpath.set("Last snapshot:" + filepath)         
+        self.usbpath.set("Last snapshot:" + filepath) 
+        cp = int(current_photo) 
+        cp += 1
+        self.config['app']['photo_count_current'] = str(cp)
+        with open('MikroKam.ini','w') as configfile:
+            self.config.write(configfile) 
+        self.config.read('MikroKam.ini')     
       
         
 
@@ -210,7 +214,7 @@ class MainPage:
         self.SnapshotButton.config(state=DISABLED)
         self.SnapshotButton.config(bg='grey')
         
-        for i in reversed(range( PREVIEW_TIMER )):
+        for i in reversed(range(int(self.config['preview']['duration'])) ):
             try:
                 if not isRunningFunc() :
                     self.PreviewButton["bg"] ='light blue' 
