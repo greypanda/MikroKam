@@ -56,13 +56,10 @@ def Main():
     ws = root.winfo_screenwidth()
     hs = root.winfo_screenheight()
     root.title( "MikroKam" )
-    if is_pi():
-        """Use the whole screen if native"""
-        root.geometry('%dx%d+%d+%d' % ( int(config['app']['screen_width']),
+
+    root.geometry('%dx%d+%d+%d' % ( int(config['app']['screen_width']),
                                         int(config['app']['screen_height']),0,0 ))
-    else:
-        """For development desktop, simulate the Rpi touchscreen"""
-        root.geometry('800x480+0+0')
+
     root.resizable(width=FALSE,height=FALSE)
     
    
@@ -73,7 +70,7 @@ def Main():
     
     gui = MainPage( mainPage,config,root ) 
    
-    print(ws,hs)
+   
     root.protocol( "WM_DELETE_WINDOW", gui.close )
    
     root.mainloop()
