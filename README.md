@@ -17,3 +17,4 @@ Using the Raspberry Pi 7 inch touch screen, control the Raspberry Pi camera to c
 
 ### Software
 * Latest Raspbian image.
+### Installation
