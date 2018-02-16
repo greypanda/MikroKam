@@ -78,6 +78,6 @@ There is a large list of *potential* controls stored in the MikroKam.ini file. O
 * Saving of files on the local disk
 * Network support ( web service? )
 ### Known Issues - in the queue
-* The first preview is not using the proper screen size. This is corrected after the first snapshot.
+
 * The position of the application window is manually controlled and does not compensate for changes to the desktop.
 * If a preview is active and the application is terminated, the preview stays on the screen. This can require a reboot of the system to correct.
