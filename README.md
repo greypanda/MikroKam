@@ -64,6 +64,9 @@ git pull
 ./install
 </code>
 
+This will save your current MikroKam.ini file as MikroKam.ini.save.
+
+It also merges your current app settings into a new MikroKam.ini that has changes made to MikroKam.ini.dist.
 
 ## Operation
 Operating the camera is very simple. There are only two functions needed to take a picture:
