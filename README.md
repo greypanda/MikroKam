@@ -36,13 +36,13 @@ git clone https://github.com/greypanda/MikroKam.git
 This will download MikroKam and create the MikroKam directory.
 
 <code>
-cd MikroKom
+cd MikroKam
 </code>
 
 To create a desktop icon:
 
 <code>
-sudo cp MikroKom.desktop /home/pi/Desktop
+sudo cp MikroKam.desktop /home/pi/Desktop/
 </code>
 
 
