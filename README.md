@@ -60,6 +60,7 @@ With a working installation, you can update to the latest version by:
 
 <code>
 git pull
+  
 ./install
 </code>
 
