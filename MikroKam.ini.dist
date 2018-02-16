@@ -8,9 +8,9 @@ screen_width = 790
 screen_height = 430
 photo_width = 600
 photo_height = 380
-image_width = 1920
+image_width = 1080
 image_height = 1080
-resolution_width = 1920
+resolution_width = 1080
 resolution_height = 1080
 test_image = test.jpg
 last_run = 
@@ -18,6 +18,7 @@ pvw_left_margin = 5
 pvw_top_margin = 60
 preview_width = 600
 preview_height = 360
+photo_path = flash
 
 [software]
 version = 0.2.3
