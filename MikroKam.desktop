@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=MikroKam
+Comment=Python Interpreter (v3.6)
+Exec=/home/pi/MikroKam/launcher
+Icon=/usr/share/pixmaps/python3.6.xpm
+Terminal=false
+Type=Application
+Categories=Development;
+StartupNotify=false
+NoDisplay=false
