@@ -13,3 +13,7 @@ Using the Raspberry Pi 7 inch touch screen, control the Raspberry Pi camera to c
   
 * A Raspberry Pi camera. Only the CSI interface is supported. Any compatible camera should work.
   
+* A network connection.
+
+### Software
+* Latest Raspbian image.
