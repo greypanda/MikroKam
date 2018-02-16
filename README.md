@@ -42,6 +42,7 @@ This will download MikroKam and create the MikroKam directory.
 cd MikroKam
 </code>
 
+Then to install or update the application:
 
 <code>
   ./install
