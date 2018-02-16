@@ -64,3 +64,11 @@ To remove the flash drive, be sure to wait at least 10-15 seconds after the last
 This project has only been around since February 2018. The basic operations are working and there are enough controls to manage the generation of images. 
 
 There is a large list of *potential* controls stored in the MikroKam.ini file. Only the section [app] is currently used. This is mostly to control the appearance of the screen. Eventually, there will be additional parameters that can be tweaked to manage the camera controls. We may even provide some on-screen tools to change commonly used controls.
+
+### Features in the planning stage
+* Saving of files on the local disk
+* Network support ( web service? )
+### Known Issues - in the queue
+* The first preview is not using the proper screen size. This is corrected after the first snapshot.
+* The position of the application window is manually controlled and does not compensate for changes to the desktop.
+* If a preview is active and the application is terminated, the preview stays on the screen. This can require a reboot of the system to correct.
