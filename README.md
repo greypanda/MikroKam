@@ -39,6 +39,12 @@ This will download MikroKam and create the MikroKam directory.
 cd MikroKam
 </code>
 
+For the initial installation *only*:
+
+<code>
+  cp MikroKam.ini.dist MikroKam.ini
+ </code>
+ 
 To create a desktop icon:
 
 <code>
