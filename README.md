@@ -42,18 +42,9 @@ This will download MikroKam and create the MikroKam directory.
 cd MikroKam
 </code>
 
-For the initial installation *only*:
-
 <code>
-  cp MikroKam.ini.dist MikroKam.ini
- </code>
- 
-To create a desktop icon:
-
-<code>
-sudo cp MikroKam.desktop /home/pi/Desktop/
+  ./install
 </code>
-
 
 You can start the program from the terminal by typing ./MikroKam or just double click the desktop icon.
 
