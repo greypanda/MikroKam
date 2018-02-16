@@ -59,3 +59,8 @@ Operating the camera is very simple. There are only two functions needed to take
 * The name of the captured image file is displayed at the bottom of the screen.
 
 To remove the flash drive, be sure to wait at least 10-15 seconds after the last snapshot to allow the data to be saved. It is always best to click the *eject* icon at the top right of the screen before removing the drive.
+
+### Background and Future
+This project has only been around since February 2018. The basic operations are working and there are enough controls to manage the generation of images. 
+
+There is a large list of *potential* controls stored in the MikroKam.ini file. Only the section [app] is currently used. This is mostly to control the appearance of the screen. Eventually, there will be additional parameters that can be tweaked to manage the camera controls. We may even provide some on-screen tools to change commonly used controls.
