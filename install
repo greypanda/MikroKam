@@ -1,0 +1,97 @@
+#!/usr/bin/env python3
+
+"""Installation/Update of MikroKam
+
+"""
+import os.path
+import sys
+import shutil
+import configparser
+import os
+
+cwd = os.getcwd()
+# test for files
+if not os.path.isfile(cwd + '/flashman.py'):
+    print("PANIC: missing flashman.py")
+    sys.exit()
+
+if not os.path.isfile(cwd + '/launcher'):
+    print("PANIC: missing launcher")
+    sys.exit()
+
+if not os.path.isfile(cwd + '/mainpage.py'):
+    print("PANIC: missing mainpage.py")
+    sys.exit()
+
+if not os.path.isfile(cwd + '/MikroKam'):
+    print("PANIC: missing MikroKam")
+    sys.exit()  
+
+if not os.path.isfile(cwd + '/MikroKam.desktop'):
+    print("PANIC: missing MikroKam.desktop")
+    sys.exit()   
+
+if not os.path.isfile(cwd + '/MikroKam.ini.dist'):
+    print("PANIC: missing MikroKam.ini.dist")
+    sys.exit()
+
+if not os.path.isfile(cwd + '/MikroKam.py'):
+    print("PANIC: missing MikroKam.py")
+    sys.exit()
+
+if not os.path.isfile(cwd + '/pikamera.py'):
+    print("PANIC: missing pikamera.py")
+    sys.exit()
+
+if not os.path.isfile(cwd + '/test.jpg'):
+    print("PANIC: missing test.jptg")
+    sys.exit()
+
+if not os.path.isfile(cwd + '/sample.jpg'):
+    print("PANIC: missing sample.jpg")
+    sys.exit()
+
+# see if this is a new install or an Update
+if not os.path.isfile(cwd + '/MikroKam.ini.dist'):
+    # we can't even get started
+    print("PANIC: there is no MikroKam.ini.dist file. Try downloading again.")
+    sys.exit()
+
+if os.path.isfile(cwd + '/MikroKam.ini'):
+    # well this looks like an Update
+    print("This appears to be an update")
+    shutil.copyfile(cwd+'/MikroKam.ini',cwd + '/MikroKam.ini.save')
+    current_config = configparser.ConfigParser()
+    current_config.read(cwd +'/MikroKam.ini')
+    new_config = configparser.ConfigParser()
+    new_config.read(cwd+'/MikroKam.ini.dist')
+    app_values = list(current_config.items('app'))
+    for parm,val in app_values:
+        new_config['app'][parm] = val
+    with open(cwd + '/MikroKam.ini','w') as current:
+        new_config.write(current)
+    current.close()
+
+
+else:
+    # looks like a new install
+   
+    if os.path.isfile('../Desktop/MikroKam.desktop'):
+        print("OOPS: there is already a desktop icon. Please remove ../Desktop/MikroKam.desktop and try again")
+        sys.exit()
+  
+    try:
+        shutil.copyfile(cwd + '/MikroKam.ini.dist',cwd + '/MikroKam.ini')
+    except:
+        print("PANIC: failed to copy MikroKam.ini.dist to MikroKam.ini")
+        sys.exit()
+    try:
+        shutil.copyfile(cwd + '/MikroKam.desktop','../Desktop/MikroKam.desktop')
+    except:
+        print("PANIC: failed to copy /home/pi/MikroKam.desktop to /home/pi/Desktop/")
+        sys.exit()
+
+print("Now you can run your application from the desktop icon or ./MikroKam")
+
+
+
