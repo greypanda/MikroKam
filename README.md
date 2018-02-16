@@ -46,3 +46,9 @@ You can start the program from the terminal by typing ./MikroKam or just double 
 You must have a formatted USB flash drive inserted to take snapshots.
 
 You can also download a zip file, unzip it into /home/pi/MikroKom and follow the above directions.
+## Operation
+Operating the camera is very simple. There are only two functions needed to take a picture:
+* Click the *Preview* button to show a live view of the camera image. This is used to focus the microscope or make other adjustments as necessary.
+* Click the *Stop* button to end the preview. If the preview is left active for a period ( you can set this value ) it will automatically stop the preview.
+* Click the *Snapshot* button to capture a photo of the image. You will be warned if the flash drive is not mounted or is not writable. 
+* The name of the captured image file is displayed at the bottom of the screen.
