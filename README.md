@@ -28,14 +28,19 @@ Start a terminal session.
 cd to /home/pi
 
 Unless you make some serious changes, MikroKam must exist in the /home/pi/MikroKam directory.
+
 <code>
 git clone https://github.com/greypanda/MikroKam.git
 </code>
+
 This will download MikroKam and create the MikroKam directory.
+
 <code>
 cd MikroKom
 </code>
+
 To create a desktop icon:
+
 <code>
 sudo cp MikroKom.desktop /home/pi/Desktop
 </code>
