@@ -15,7 +15,8 @@ For this installation, it is assumed that you have a basic understanding of the 
 * A Raspberry Pi camera. Only the CSI interface is supported. Any compatible camera should work.
   
 * A network connection.
-* A USB flashdrive for saving pictures. 
+* A USB flashdrive for saving pictures.
+* A USB keyboard and mouse (wireless is good)
 
 ### Software
 * Latest Raspbian image.
@@ -24,6 +25,8 @@ For this installation, it is assumed that you have a basic understanding of the 
 Start with a fresh copy of Raspbian.
 
 Start a terminal session.
+
+(If you can start a ssh session, it is easier to do this with a larger display!)
 
 cd to /home/pi
 
