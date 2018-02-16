@@ -19,7 +19,9 @@ git clone https://github.com/greypanda/MikroKam.git
 
 cd MikroKom
 
+<code>
 sudo cp MikroKom.desktop /home/pi/Desktop
+</code>
 
 You can start the program from the terminal by typing ./MikroKam or just double click the desktop icon.
 
