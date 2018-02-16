@@ -27,7 +27,6 @@ capture_format = jpeg
 quality = 85
 analog_gain = 
 awbg = 
-quality =
 brightness = 50
 color_effects = None
 contrast = 0
