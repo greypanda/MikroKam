@@ -13,7 +13,9 @@ Start a terminal session.
 
 Start at your /home/pi directory.
 
+<code>
 git clone https://github.com/greypanda/MikroKam.git
+</code>
 
 cd MikroKom
 
