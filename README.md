@@ -3,7 +3,7 @@ A Python application to manage a Raspberry Pi connected to a microscope.
 Using the Raspberry Pi 7 inch touch screen, control the Raspberry Pi camera to capture images from a microscope.
 
 # Getting Started
-For this installation, it is assumed that you have a basic understanding of the Raspberry Pi and can download, install, and test an OS image, such as Raspbian.
+For this installation, it is assumed that you have a basic understanding of the Raspberry Pi and can download, install, and test an OS image, such as Raspbian. You should also be comfortable with working in a terminal session using the command line.
 
 ## Prerequisites
 
@@ -15,6 +15,7 @@ For this installation, it is assumed that you have a basic understanding of the 
 * A Raspberry Pi camera. Only the CSI interface is supported. Any compatible camera should work.
   
 * A network connection.
+* A USB flashdrive for saving pictures. 
 
 ### Software
 * Latest Raspbian image.
@@ -34,6 +35,7 @@ This will download MikroKam and create the MikroKam directory.
 <code>
 cd MikroKom
 </code>
+To create a desktop icon:
 <code>
 sudo cp MikroKom.desktop /home/pi/Desktop
 </code>
