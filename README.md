@@ -57,3 +57,5 @@ Operating the camera is very simple. There are only two functions needed to take
 * Click the *Stop* button to end the preview. If the preview is left active for a period ( you can set this value ) it will automatically stop the preview.
 * Click the *Snapshot* button to capture a photo of the image. You will be warned if the flash drive is not mounted or is not writable. 
 * The name of the captured image file is displayed at the bottom of the screen.
+
+To remove the flash drive, be sure to wait at least 10-15 seconds after the last snapshot to allow the data to be saved. It is always best to click the *eject* icon at the top right of the screen before removing the drive.
