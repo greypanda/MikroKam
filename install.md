@@ -29,3 +29,4 @@ You can start the program from the terminal by typing ./MikroKam or just double 
 
 You must have a formatted USB flash drive inserted to take snapshots.
 
+You can also download a zip file, unzip it into /home/pi/MikroKom and follow the above directions.
