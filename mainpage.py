@@ -33,10 +33,11 @@ class PreviewTask():
 
     """
 
-    def __init__( self, taskFuncPointer ):
+    def __init__( self, taskFuncPointer,config ):
         self.__taskFuncPointer_ = taskFuncPointer
         self.__previewThread_ = None
         self.__isRunning_ = False
+        self.config = config
 
     def taskFuncPointer( self ) : return self.__taskFuncPointer_
 
@@ -46,20 +47,21 @@ class PreviewTask():
     def start( self ): 
         if not self.__isRunning_ :
             self.__isRunning_ = True
-            self.__previewThread_ = self.previewThread( self )
+            self.__previewThread_ = self.previewThread( self,self.config )
             self.__previewThread_.start()
 
     def stop( self ) : self.__isRunning_ = False
 
     class previewThread( threading.Thread ):
-        def __init__( self, bgTask ):      
+        def __init__( self, bgTask ,config):      
             threading.Thread.__init__( self )
             self.__bgTask_ = bgTask
+            self.config = config
 
         def run( self ):
             #print("running preview thread")
  
-            pikamera.Preview()
+            pikamera.Preview(self.config)
             try :
                 self.__bgTask_.taskFuncPointer()( self.__bgTask_.isRunning )
             except Exception as e:
@@ -101,13 +103,13 @@ class MainPage:
        
         self.SnapshotButton = Button( 
             master, text="Snapshot", command=self.snapshotProcess,bg="light green" )
-        self.SnapshotButton.grid(row=0,column=6,columnspan=3,rowspan=1,sticky="NESW")
+        self.SnapshotButton.grid(row=0,column=6,columnspan=6,rowspan=1,sticky="NESW")
         self.SnapshotButton.grid_columnconfigure(1,weight=1)
 
   
         self.PreviewButton = Button( 
             master, text="Preview", command=self.onPreviewClicked )
-        self.PreviewButton.grid(row=2,column=6,columnspan=3,rowspan=1,sticky="NESW")
+        self.PreviewButton.grid(row=2,column=6,columnspan=6,rowspan=1,sticky="NESW")
         
         self.usbpath = StringVar()
         self.usbpath.set('No USB drive found')
@@ -118,13 +120,13 @@ class MainPage:
    
         self.cancelButton = Button( 
             master, text="Stop", command=self.onStopClicked )
-        self.cancelButton.grid(row=2,column=9,columnspan=4,rowspan=1,sticky="NESW")
+        self.cancelButton.grid(row=2,column=13,columnspan=6,rowspan=1,sticky="NESW")
        
         self.quitButton = Button(
             master,text="Quit",command=self.onQuitClicked)
         self.quitButton.grid(row=4,column=9,columnspan=4,rowspan=1,sticky="NESW")
 
-        self.bgTask2 = PreviewTask( self.previewThread)
+        self.bgTask2 = PreviewTask( self.previewThread,self.config)
       
    
     def close( self ) :
@@ -188,11 +190,11 @@ class MainPage:
         current_photo = self.config['app']['photo_count_current']
         if not current_photo:
             self.config['app']['photo_count_current'] = self.config['app']['photo_count_initial']
-            current_photo = self.config['app'['photo_count_current']]
+            current_photo = self.config['app']['photo_count_current']
         filepath = path + '/' + self.config['app']['photo_prefix'] + current_photo  + '.' + self.config['camera']['capture_format']
 
         """Invoke the camera"""
-        pikamera.Snapshot(filepath )
+        pikamera.Snapshot(self.config,filepath )
 
         """display the last picture and update the label"""
         self.image = Image.open(filepath)

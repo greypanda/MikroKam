@@ -17,20 +17,26 @@ import shutil
 
 if CAMERA == 'pi':
     camera = PiCamera()
-def Snapshot(path):
+def Snapshot(config,path):
     if CAMERA == 'pi':
-       
-        camera.start_preview(fullscreen=False,window=(10,10,600,400))
+        camera.resolution = (int(config['app']['resolution_width']),int(config['app']['resolution_height']))
+        camera.start_preview(fullscreen=False,window=(int(config['app']['pvw_left_margin']),
+                                                    int(config['app']['pvw_top_margin']),
+                                                    int(config['app']['preview_width']),
+                                                    int(config['app']['preview_height'])))
         sleep(2)
         camera.capture(path)
         camera.stop_preview()
     else:
         shutil.copyfile('sample.jpg',path)
 
-def Preview():
+def Preview(config):
     if CAMERA == 'pi':
        
-        camera.start_preview(fullscreen=False,window=(10,10,600,400))
+        camera.start_preview(fullscreen=False,window=(int(config['app']['pvw_left_margin']),
+                                                    int(config['app']['pvw_top_margin']),
+                                                    int(config['app']['preview_width']),
+                                                    int(config['app']['preview_height'])))
     
 def Stop():
     if CAMERA == 'pi':
