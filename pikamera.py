@@ -32,7 +32,7 @@ def Snapshot(config,path):
 
 def Preview(config):
     if CAMERA == 'pi':
-       
+        camera.resolution = (int(config['app']['resolution_width']),int(config['app']['resolution_height']))
         camera.start_preview(fullscreen=False,window=(int(config['app']['pvw_left_margin']),
                                                     int(config['app']['pvw_top_margin']),
                                                     int(config['app']['preview_width']),
