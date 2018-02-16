@@ -1,10 +1,10 @@
 Requirements:
 
-  Raspberry PI 2 or 3.
+    Raspberry PI 2 or 3.
 
-  Raspberry PI touchscreen.
+    Raspberry PI touchscreen.
 
-  Raspberry PI camera (or equivalent)
+    Raspberry PI camera (or equivalent)
 
 Start with a fresh copy of Raspbian.
 
