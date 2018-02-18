@@ -8,6 +8,7 @@ import sys
 import shutil
 import configparser
 import os
+import pip
 
 cwd = os.getcwd()
 # test for files
@@ -90,6 +91,11 @@ else:
     except:
         print("PANIC: failed to copy /home/pi/MikroKam.desktop to /home/pi/Desktop/")
         sys.exit()
+
+
+pip.main(['install','pillow'])
+pip.main(['install','pyudev'])
+pip.main(['install','psutil'])
 
 print("Now you can run your application from the desktop icon or ./MikroKam")
 
