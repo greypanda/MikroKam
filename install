@@ -77,9 +77,9 @@ if os.path.isfile(cwd + '/MikroKam.ini'):
 else:
     # looks like a new install
    
-    if os.path.isfile('../Desktop/MikroKam.desktop'):
-        print("OOPS: there is already a desktop icon. Please remove ../Desktop/MikroKam.desktop and try again")
-        sys.exit()
+    #if os.path.isfile('../Desktop/MikroKam.desktop'):
+    #    print("OOPS: there is already a desktop icon. Please remove ../Desktop/MikroKam.desktop and try again")
+    #    sys.exit()
   
     try:
         shutil.copyfile(cwd + '/MikroKam.ini.dist',cwd + '/MikroKam.ini')
