@@ -228,6 +228,7 @@ class MainPage:
                 if not isRunningFunc() :
                     self.PreviewButton["bg"] ='light blue' 
                     self.SnapshotButton.config(state=NORMAL)
+                    self.quitButton.config(state=NORMAL)
                     self.SnapshotButton.config(bg='light green')
 
                     return
