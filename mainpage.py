@@ -229,6 +229,7 @@ class MainPage:
                     self.PreviewButton["bg"] ='light blue' 
                     self.SnapshotButton.config(state=NORMAL)
                     self.quitButton.config(state=NORMAL)
+                    self.quitButton.config(bg='light green')
                     self.SnapshotButton.config(bg='light green')
 
                     return
