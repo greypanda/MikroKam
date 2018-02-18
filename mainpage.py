@@ -220,6 +220,8 @@ class MainPage:
         # disable snapshots to prevent multiple camera access
         self.SnapshotButton.config(state=DISABLED)
         self.SnapshotButton.config(bg='grey')
+        self.quitButton.config(state=DISABLED)
+        self.quitButton.config(bg='grey')
         
         for i in reversed(range(int(self.config['preview']['duration'])) ):
             try:
@@ -236,6 +238,7 @@ class MainPage:
 
         # restore the buttons
         self.SnapshotButton.config(state=NORMAL)
+        self.quitButton.config(state=NORMAL)
         self.PreviewButton['bg'] = 'light blue'
                      
    
