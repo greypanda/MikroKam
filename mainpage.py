@@ -154,6 +154,7 @@ class MainPage:
     def onQuitClicked(self):
         """the quit button was clicked"""
         print("on quit clicked")
+        self.close()
         try:
            
             self.root.destroy()
