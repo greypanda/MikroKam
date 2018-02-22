@@ -1,1 +1,1 @@
-==Arducam Housin===
+==Arducam Housing===
