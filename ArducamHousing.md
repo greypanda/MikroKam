@@ -1,6 +1,6 @@
-Arducam Housing
+# Arducam Housing
 
-The Arducam is bare. A simple 3d printed housing can be made with the 3 included files.
+The Arducam circuit board is bare. A simple 3d printed housing can be made with the 3 included files.
 
 You can preview the products on https://www.viewstl.com/
 
